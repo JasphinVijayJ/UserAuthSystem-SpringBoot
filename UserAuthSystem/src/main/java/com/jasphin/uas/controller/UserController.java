@@ -17,9 +17,12 @@ import com.jasphin.uas.service.UserService;
 
 import jakarta.validation.Valid;
 
+@CrossOrigin(origins = {
+		"http://localhost:5173",
+		"https://jasphinvijayj.github.io"
+})
 @RestController
 @RequestMapping("/uas/user")
-@CrossOrigin(origins = "http://localhost:5173") // React Vite default port
 public class UserController {
 
 	@Autowired
