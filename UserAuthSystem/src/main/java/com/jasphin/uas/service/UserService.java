@@ -20,10 +20,10 @@ public class UserService {
 
 	@Autowired
 	private UserRepository userRepository;
-	
+
 //	Since your TransactionServiceImplement class has only one constructor, you can omit @Autowired
 	private JwtUtil jwtUtil;
-	
+
 //	Constructor Injection
 	public UserService(JwtUtil jwtUtil) {
 		this.jwtUtil = jwtUtil;
@@ -42,12 +42,12 @@ public class UserService {
 		if (!user.getPassword().equals(user.getConfirmPassword())) {
 			throw new PasswordMismatchException(ErrorMessage.PASSWORD_MISMATCH.getMessage());
 		}
-		
+
 		try {
-		    userRepository.save(user);
-		    return SuccessMessage.REGISTER_SUCCESS.getMessage();
+			userRepository.save(user);
+			return SuccessMessage.REGISTER_SUCCESS.getMessage();
 		} catch (Exception e) {
-		    return ErrorMessage.REGISTER_FAILED.getMessage();
+			return ErrorMessage.REGISTER_FAILED.getMessage();
 		}
 	}
 
@@ -58,8 +58,8 @@ public class UserService {
 		if (!user.getPassword().equals(password)) {
 			throw new InvalidPasswordException(ErrorMessage.INVALID_PASSWORD.getMessage());
 		}
-		
-		String token = jwtUtil.generateToken(email);	// generate JWT
-		return new LoginResponse(token, SuccessMessage.LOGIN_SUCCESS.getMessage());
+
+		String token = jwtUtil.generateToken(email); // generate JWT
+		return new LoginResponse(token, user.getRole(), SuccessMessage.LOGIN_SUCCESS.getMessage());
 	}
 }

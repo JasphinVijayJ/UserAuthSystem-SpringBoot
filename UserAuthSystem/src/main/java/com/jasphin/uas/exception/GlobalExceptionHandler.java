@@ -48,13 +48,17 @@ public class GlobalExceptionHandler {
 //	Used in Login User
 	@ExceptionHandler(UserNotFoundException.class)
 	public ResponseEntity<LoginResponse> handleUserNotFoundException(UserNotFoundException e) {
-		return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new LoginResponse(null, e.getMessage()));	// token=null, message=error
+		return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new LoginResponse(null, null, e.getMessage())); // token=null,
+																												// role=null,
+																												// message=error
 	}
 
 //	Used in Login User
 	@ExceptionHandler(InvalidPasswordException.class)
 	public ResponseEntity<LoginResponse> handleInvalidPasswordException(InvalidPasswordException e) {
-		return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(new LoginResponse(null, e.getMessage()));	// token=null, message=error
+		return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(new LoginResponse(null, null, e.getMessage())); // token=null,
+																													// role=null,
+																													// message=error
 	}
 
 	@ExceptionHandler(Exception.class)

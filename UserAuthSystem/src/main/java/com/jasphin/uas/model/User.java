@@ -50,7 +50,6 @@ public class User {
 	@Enumerated(EnumType.STRING)
 	@Column(nullable = false)
 	private Role role = Role.USER;
-	
 
 	// Getters and Setters
 	public String getName() {
@@ -91,6 +90,10 @@ public class User {
 
 	public void setConfirmPassword(String confirmPassword) {
 		this.confirmPassword = confirmPassword;
+	}
+
+	public Role getRole() {
+		return role;
 	}
 
 }
