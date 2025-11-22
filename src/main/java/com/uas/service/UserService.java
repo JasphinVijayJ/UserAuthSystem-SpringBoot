@@ -13,14 +13,13 @@ import org.springframework.stereotype.Service;
 @Service
 public class UserService {
 
-    @Autowired
-    private UserRepository userRepository;
-
-    //	Since your TransactionServiceImplement class has only one constructor, you can omit @Autowired
-    private JwtUtil jwtUtil;
+    //	Since your UserService class has only one constructor, you can omit @Autowired
+    private final UserRepository userRepository;
+    private final JwtUtil jwtUtil;
 
     //	Constructor Injection
-    public UserService(JwtUtil jwtUtil) {
+    public UserService(UserRepository userRepository, JwtUtil jwtUtil) {
+        this.userRepository = userRepository;
         this.jwtUtil = jwtUtil;
     }
 

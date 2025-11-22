@@ -7,6 +7,7 @@ import com.uas.exception.InvalidPasswordException;
 import com.uas.exception.UserNotFoundException;
 import com.uas.model.Admin;
 import com.uas.repository.AdminRepository;
+import com.uas.repository.UserRepository;
 import com.uas.security.JwtUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,14 +15,13 @@ import org.springframework.stereotype.Service;
 @Service
 public class AdminService {
 
-    @Autowired
-    private AdminRepository adminRepository;
-
-    //	Since your TransactionServiceImplement class has only one constructor, you can omit @Autowired
-    private JwtUtil jwtUtil;
+    //	Since your AdminService class has only one constructor, you can omit @Autowired
+    private final AdminRepository adminRepository;
+    private final JwtUtil jwtUtil;
 
     //	Constructor Injection
-    public AdminService(JwtUtil jwtUtil) {
+    public AdminService(AdminRepository adminRepository, JwtUtil jwtUtil) {
+        this.adminRepository = adminRepository;
         this.jwtUtil = jwtUtil;
     }
 

@@ -33,8 +33,6 @@ public class User {
     @Column(nullable = false)
     private String password;
 
-    @NotBlank(message = "Confirm Password is required")
-    @Size(min = 6, message = "Confirm Password must be at least 6 characters")
     @Transient // <-- this will not be stored in DB
     private String confirmPassword;
 
@@ -43,6 +41,15 @@ public class User {
     private Role role = Role.USER;
 
     // Getters and Setters
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
     public String getName() {
         return name;
     }
@@ -85,5 +92,9 @@ public class User {
 
     public Role getRole() {
         return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
     }
 }

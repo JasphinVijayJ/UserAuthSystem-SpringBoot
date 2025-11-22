@@ -62,6 +62,21 @@ public class GlobalExceptionHandler {
         // message=error
     }
 
+    @ExceptionHandler(OTPExpiredException.class)
+    public ResponseEntity<String> handleOTPExpiredException(OTPExpiredException e) {
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+    }
+
+    @ExceptionHandler(OTPVerificationRequiredException.class)
+    public ResponseEntity<String> handleOTPVerificationRequiredException(OTPVerificationRequiredException e) {
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+    }
+
+    @ExceptionHandler(InvalidOtpException.class)
+    public ResponseEntity<String> handleInvalidOtpException(InvalidOtpException e) {
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+    }
+
     @ExceptionHandler(Exception.class)
     public ResponseEntity<String> handleException(Exception e) {
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("An unexpected error occurred.");
