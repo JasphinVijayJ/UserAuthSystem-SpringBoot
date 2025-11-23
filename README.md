@@ -168,11 +168,11 @@ com.uas
 
 ## Forgot Password APIs → `/uas/user/password`
 
-| Method | Endpoint  | Description            |
-|--------|-----------|------------------------|
-| POST   | `/forgot` | Send OTP to user email |
-| POST   | `/verify` | Verify OTP             |
-| POST   | `/reset`  | Reset password         |
+| Method | Endpoint           | Description            |
+|--------|--------------------|------------------------|
+| POST   | `/forgot-password` | Send OTP to user email |
+| POST   | `/verify-otp`      | Verify OTP             |
+| POST   | `/reset-password`  | Reset password         |
 
 ---
 
@@ -281,7 +281,7 @@ server.port=8080
 Backend URL:
 
 ```
-http://localhost:8080/uas
+http://localhost:8080/uas/user
 ```
 
 ---
